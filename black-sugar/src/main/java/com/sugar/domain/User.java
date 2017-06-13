@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public class User {
 	@Id
 	@GeneratedValue
-	private String id;
+	private Long id;
 
 	@Column(nullable=false, length=20)
 	private String userId;
@@ -45,9 +45,15 @@ public class User {
 		this.email = email;
 	}
 	
+	public void update(User user) {
+		this.password = user.password;
+		this.userName = user.userName;
+		this.email = user.email;
+	}
+
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", password=" + password + ", userName=" + userName + ", email=" + email
-				+ "]";
+		return "User [id=" + id + ", userId=" + userId + ", password=" + password + ", userName=" + userName
+				+ ", email=" + email + "]";
 	}
 }
