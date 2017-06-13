@@ -6,6 +6,8 @@
 	
   	<div class="container">
 	  	<form method="post" action="/users/{{id}}">
+	  	<input type="hidden" name="_method" value="put" />
+	  	
 	  	<input type="hidden" name="id" value="{{id}}" />
 
 		  <div class="form-group">
