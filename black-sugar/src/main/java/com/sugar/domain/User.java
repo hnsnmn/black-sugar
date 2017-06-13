@@ -1,9 +1,23 @@
-package com.sugar.web;
+package com.sugar.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class User {
+	@Id
+	@GeneratedValue
+	private String id;
+
+	@Column(nullable=false, length=20)
 	private String userId;
+
 	private String password;
+
 	private String userName;
+
 	private String email;
 	
 	public String getUserId() {
