@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet">
+
+  </head>
+  <body>
+    {{> /include/navigation}}
+	
+  	<div class="container">
+	  	<form action="/users" method="post">
+		  <div class="form-group">
+		    <label for="userId">사용자아이디</label>
+		    <input type="text" class="form-control" id="userId" name="userId"  placeholder="userId">
+		  </div>
+		  <div class="form-group">
+		    <label for="password">Password</label>
+		    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+		  </div>
+		  <div class="form-group">
+		    <label for="userName">사용자이름</label>
+		    <input type="text" class="form-control" id="userName" name="userName" placeholder="userName">
+		  </div>
+		  <div class="form-group">
+		    <label for="userName">이메일</label>
+		    <input type="email" class="form-control" id="email" name="email" placeholder="email">
+		  </div>
+		  <button type="submit" class="btn btn-default">Submit</button>
+		</form>
+  	</div>
+
+    
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/webjars/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+  </body>
+</html>

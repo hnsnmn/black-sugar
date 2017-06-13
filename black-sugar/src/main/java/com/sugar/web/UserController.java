@@ -22,10 +22,14 @@ public class UserController {
 		return "redirect:/users";
 	}
 	
-	
 	@GetMapping("")
 	public String list(Model model) {
 		model.addAttribute("users", userRepository.findAll());
 		return "/user/list";
+	}
+
+	@GetMapping("/form")
+	public String form() {
+		return "/user/form";
 	}
 }
