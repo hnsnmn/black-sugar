@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.sugar.domain.User;
 import com.sugar.domain.UserRepository;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/users")
 public class UserController {
@@ -48,5 +50,25 @@ public class UserController {
 		user.update(newUser);
 		userRepository.save(user);
 		return "redirect:/users";
+	}
+
+	@GetMapping("/loginForm")
+	public String loginForm() {
+		return "/user/login";
+	}
+
+	@PostMapping("login")
+	public String login(String userId, String password, HttpSession session) {
+	    System.out.println("userId : " + userId +":" + password);
+        User user = userRepository.findByUserId(userId);
+        if (user == null) {
+            return "redirect:/users/loginForm";
+        }
+
+        if (!password.equals(user.getPassword())) {
+            return "redirect:/users/loginForm";
+        }
+        session.setAttribute("user", user);
+		return "redirect:/";
 	}
 }
