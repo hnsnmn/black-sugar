@@ -1,23 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
+{{> /include/header}}
 
-    <!-- Bootstrap -->
-    <link href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet">
-
-  </head>
   <body>
     {{> /include/navigation}}
 	
   	<div class="container">
 	  	<form action="/users" method="post">
 		  <div class="form-group">
-		    <label for="userId">ì‚¬ìš©ìì•„ì´ë””</label>
+		    <label for="userId">»ç¿ëÀÚ¾ÆÀÌµğ</label>
 		    <input type="text" class="form-control" id="userId" name="userId"  placeholder="userId">
 		  </div>
 		  <div class="form-group">
@@ -25,11 +16,11 @@
 		    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
 		  </div>
 		  <div class="form-group">
-		    <label for="userName">ì‚¬ìš©ìì´ë¦„</label>
+		    <label for="userName">»ç¿ëÀÚÀÌ¸§</label>
 		    <input type="text" class="form-control" id="userName" name="userName" placeholder="userName">
 		  </div>
 		  <div class="form-group">
-		    <label for="userName">ì´ë©”ì¼</label>
+		    <label for="userName">ÀÌ¸ŞÀÏ</label>
 		    <input type="email" class="form-control" id="email" name="email" placeholder="email">
 		  </div>
 		  <button type="submit" class="btn btn-default">Submit</button>

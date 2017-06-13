@@ -23,6 +23,7 @@
 			<th>아이디</th>
 			<th>이름</th>
 			<th>비밀번호</th>
+			<th></th>
 		</tr>
 		</thead>
 		<tbody>
@@ -32,6 +33,7 @@
 				<td>{{userId}}</td>
 				<td>{{userName}}</td>
 				<td>{{email}}</td>
+				<td><a href="/users/{{id}}/form" class="btn btn-success" role="button">수정</a></td>
 			</tr>
 			{{/users}}
 		</tbody>
