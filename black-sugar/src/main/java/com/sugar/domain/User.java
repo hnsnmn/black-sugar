@@ -19,6 +19,26 @@ public class User {
 	private String userName;
 
 	private String email;
+
+	public void update(User user) {
+		this.password = user.password;
+		this.userName = user.userName;
+		this.email = user.email;
+	}
+	
+	public boolean matchPassword(String newPassword) {
+		if (newPassword == null) {
+			return false;
+		}
+		return newPassword.equals(this.password);
+	}
+
+	public boolean matchId(Long newId) {
+		if (newId == null) {
+			return false;
+		}
+		return newId.equals(this.id);
+	}
 	
 	public Long getId() {
 		return id;
@@ -51,12 +71,6 @@ public class User {
 		this.email = email;
 	}
 	
-	public void update(User user) {
-		this.password = user.password;
-		this.userName = user.userName;
-		this.email = user.email;
-	}
-
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", userId=" + userId + ", password=" + password + ", userName=" + userName
