@@ -19,18 +19,17 @@
             <tr>
                 <th>순번</th>
                 <th>제목</th>
-                <th>내용</th>
+                <th>등록일</th>
+                <th>등록자</th>
             </tr>
+            {{#questions}}
             <tr>
                 <td>1</td>
-                <td>하하하</td>
-                <td>내용무</td>
+                <td>{{title}}</td>
+                <td>2017.6.1</td>
+                <td>{{writer}}</td>
             </tr>
-            <tr>
-                <td>2</td>
-                <td>하하하</td>
-                <td>내용무</td>
-            </tr>
+            {{/questions}}
         </table>
         <a class="btn btn-default" href="/questions/form" role="button">질문하기</a>
 	</div>
