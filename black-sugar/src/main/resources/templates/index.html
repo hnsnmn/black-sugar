@@ -25,9 +25,9 @@
             {{#questions}}
             <tr>
                 <td>1</td>
-                <td>{{title}}</td>
-                <td>2017.6.1</td>
-                <td>{{writer}}</td>
+                <td><a href="/questions/{{id}}">{{title}}</a></td>
+                <td>{{formattedCreatedDate}}</td>
+                <td>{{writer.userId}}</td>
             </tr>
             {{/questions}}
         </table>
