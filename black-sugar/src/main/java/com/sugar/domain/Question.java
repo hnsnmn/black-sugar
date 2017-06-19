@@ -2,6 +2,7 @@ package com.sugar.domain;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
@@ -10,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 
 /**
  * Created by hongseongmin on 2017. 6. 18..
@@ -29,6 +32,10 @@ public class Question {
     @Lob
     private String contents;
     private LocalDateTime createdDate;
+    
+    @OneToMany(mappedBy = "question")
+    @OrderBy("id ASC")
+    private List<Answer> answers;
 
     public Question() {}
     public Question(User writer, String title, String contents) {
