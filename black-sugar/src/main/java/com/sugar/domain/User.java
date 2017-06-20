@@ -5,6 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
 @Entity
 public class User {
 	@Id
@@ -12,12 +16,16 @@ public class User {
 	private Long id;
 
 	@Column(nullable=false, length=20, unique=true)
+	@JsonProperty
 	private String userId;
 
+	@JsonIgnore
 	private String password;
 
+	@JsonProperty
 	private String userName;
 
+	@JsonProperty
 	private String email;
 
 	public void update(User user) {

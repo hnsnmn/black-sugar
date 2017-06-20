@@ -3,10 +3,10 @@ package com.sugar.web;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.sugar.domain.Answer;
 import com.sugar.domain.AnswerRepository;
@@ -14,9 +14,9 @@ import com.sugar.domain.Question;
 import com.sugar.domain.QuestionRepository;
 import com.sugar.domain.User;
 
-@Controller
-@RequestMapping("/questions/{questionId}/answers")
-public class AnswerController {
+@RestController
+@RequestMapping("/api/questions/{questionId}/answers")
+public class ApiAnswerController {
 	@Autowired
 	private QuestionRepository questionRepository;
 
@@ -24,15 +24,13 @@ public class AnswerController {
 	private AnswerRepository answerRepository;
 
 	@PostMapping("")
-	public String create(@PathVariable Long questionId, String contents, HttpSession session) {
+	public Answer create(@PathVariable Long questionId, String contents, HttpSession session) {
 		if (!HttpSessionUtils.isLoginUser(session)) {
-			return "redirect:/users/loginForm";
+			return null;
 		}
 		User writer = HttpSessionUtils.getUserFromSession(session);
 		Question question = questionRepository.findOne(questionId);
 		Answer answer = new Answer(writer, question, contents);
-		answerRepository.save(answer);
-
-		return String.format("redirect:/questions/%d", questionId);
+		return answerRepository.save(answer);
 	}
 }

@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
 public class Answer {
 	@Id
@@ -19,13 +21,16 @@ public class Answer {
 	
 	@ManyToOne
 	@JoinColumn(foreignKey = @ForeignKey(name = "fk_answer_fk"))
+	@JsonProperty
 	private User writer;
 	
 	@ManyToOne
 	@JoinColumn(foreignKey = @ForeignKey(name = "fk_answer_question_fk"))
+	@JsonProperty
 	private Question question;
 	
 	@Lob
+	@JsonProperty
 	private String contents;
 	private LocalDateTime createDate;
 	
@@ -71,6 +76,4 @@ public class Answer {
 		return "Answer [id=" + id + ", writer=" + writer + ", contents=" + contents + ", createDate=" + createDate
 				+ "]";
 	}
-	
-	
 }

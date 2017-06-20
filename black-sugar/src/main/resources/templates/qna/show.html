@@ -22,6 +22,7 @@
 			<input type="hidden" name="_method" value="delete" />
 			<button type="submit" class="btn btn-default">삭제하기</button>
 		</form>
+		<div id="answer-area">
 		{{#answers}}
 		<ul>
 			<li>답변 작성자 : {{writer.userId}}</li>
@@ -29,7 +30,8 @@
 			<li>답변 쓴 날짜 : {{formattedCreatedDate}}</li>
 		</ul>
 		{{/answers}}
-		<form action="/questions/{{id}}/answers" method="post">
+		</div>
+		<form action="/api/questions/{{id}}/answers" class="answer-write" method="post">
 			<div class="form-group">
 				<textarea class="form-control" type="textarea" name="contents" maxlength="140" rows="7"></textarea>
 			</div>
@@ -40,4 +42,12 @@
 	{{> /include/footer}}
 
   </body>
+  
+	<script type="text/template" id="answerTemplate">
+		<ul>
+			<li>답변 작성자 : {0}</li>
+			<li>답변 내용 : {1}</li>
+			<li>답변 쓴 날짜 : {2}</li>
+		</ul>
+	</script>
 </html>
