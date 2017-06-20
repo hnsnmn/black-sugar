@@ -17,6 +17,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Answer {
 	@Id
 	@GeneratedValue
+	@JsonProperty
 	private Long id;
 	
 	@ManyToOne
@@ -75,5 +76,11 @@ public class Answer {
 	public String toString() {
 		return "Answer [id=" + id + ", writer=" + writer + ", contents=" + contents + ", createDate=" + createDate
 				+ "]";
+	}
+	public boolean isSameWriter(User loginUser) {
+		if (loginUser == null) {
+			return false;
+		}
+		return writer.equals(loginUser);
 	}
 }

@@ -3,6 +3,7 @@ package com.sugar.web;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import com.sugar.domain.Answer;
 import com.sugar.domain.AnswerRepository;
 import com.sugar.domain.Question;
 import com.sugar.domain.QuestionRepository;
+import com.sugar.domain.Result;
 import com.sugar.domain.User;
 
 @RestController
@@ -32,5 +34,19 @@ public class ApiAnswerController {
 		Question question = questionRepository.findOne(questionId);
 		Answer answer = new Answer(writer, question, contents);
 		return answerRepository.save(answer);
+	}
+	
+	@DeleteMapping("/{id}")
+	public Result delete(@PathVariable Long questionId, @PathVariable Long id, HttpSession session) {
+		if (!HttpSessionUtils.isLoginUser(session)) {
+			return Result.fail("로그인 사용자만 이용가능합니다.");
+		}
+		User loginUser = HttpSessionUtils.getUserFromSession(session);
+		Answer answer = answerRepository.findOne(id);
+		if (!answer.isSameWriter(loginUser)) {
+			return Result.fail("자신의 글만 삭제 가능합니다. ");
+		}
+		answerRepository.delete(id);
+		return Result.ok();
 	}
 }

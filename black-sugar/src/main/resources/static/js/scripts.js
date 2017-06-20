@@ -24,8 +24,8 @@ function onError() {
 function onSuccess(data, status) {
 	console.log(data);
 	var answerTemplate = $('#answerTemplate').html();
-	var template = answerTemplate.format(data.writer.userId, data.contents, data.formattedCreatedDate);
-	$('#answer-area').append(template);
+	var template = answerTemplate.format(data.writer.userId, data.contents, data.formattedCreatedDate, data.question.id, data.id);
+	$('.answer-grid').append(template);
 	$('textarea').val('');
 }
 
@@ -41,4 +41,28 @@ if (!String.prototype.format) {
       ;
     });
   };
+}
+
+$('.link-delete-article').click(delAnswer);
+
+function delAnswer(e) {
+	e.preventDefault();
+	var delBtnObj = $(this);
+	var url = delBtnObj.attr('href');
+	console.log("delete :" + url);
+
+	$.ajax({
+			type : 'delete', 
+			url : url, 
+			dataType : 'json', 
+			error : function(xhr, status) {
+				console.log("error");
+			}, 
+			success : function(data, status) {
+				console.log(data);
+				if (data.valid) {
+					delBtnObj.closest('.answer-area').remove();
+				}
+			}
+	});
 }

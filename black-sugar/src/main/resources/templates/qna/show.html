@@ -18,17 +18,24 @@
 			</div>
 			<a href="/questions/{{id}}/form" class="btn btn-success" role="button">수정하기</a>
 		</form>
+
 		<form action="/questions/{{id}}" method="post">
 			<input type="hidden" name="_method" value="delete" />
 			<button type="submit" class="btn btn-default">삭제하기</button>
 		</form>
-		<div id="answer-area">
+		<div class="answer-grid">
 		{{#answers}}
-		<ul>
-			<li>답변 작성자 : {{writer.userId}}</li>
-			<li>답변 내용 : {{contents}}</li>
-			<li>답변 쓴 날짜 : {{formattedCreatedDate}}</li>
-		</ul>
+		<div class="answer-area">
+			<ul>
+				<li>답변 작성자 : {{writer.userId}}</li>
+				<li>답변 내용 : {{contents}}</li>
+				<li>답변 쓴 날짜 : {{formattedCreatedDate}}</li>
+			</ul>
+			<div class="article-util">
+				<span><a href="/api/questions/{{question.id}}/answers/{{id}}" class="link-update-article">수정</a></span>
+				<span><a href="/api/questions/{{question.id}}/answers/{{id}}" class="link-delete-article">삭제</a></span>
+			</div>
+		</div>
 		{{/answers}}
 		</div>
 		<form action="/api/questions/{{id}}/answers" class="answer-write" method="post">
@@ -44,10 +51,16 @@
   </body>
   
 	<script type="text/template" id="answerTemplate">
-		<ul>
-			<li>답변 작성자 : {0}</li>
-			<li>답변 내용 : {1}</li>
-			<li>답변 쓴 날짜 : {2}</li>
-		</ul>
+		<div class="answer-area">
+			<ul>
+				<li>답변 작성자 : {0}</li>
+				<li>답변 내용 : {1}</li>
+				<li>답변 쓴 날짜 : {2}</li>
+			</ul>
+			<div class="article-util">
+				<span><a href="/api/questions/{3}/answers/{4}" class="link-update-article">수정</a></span>
+				<span><a href="/api/questions/{3}/answers/{4}" class="link-delete-article">삭제</a></span>
+			</div>
+		</div>
 	</script>
 </html>

@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * Created by hongseongmin on 2017. 6. 18..
  */
@@ -21,6 +23,7 @@ import javax.persistence.OrderBy;
 public class Question {
     @Id
     @GeneratedValue
+    @JsonProperty
     private Long id;
 
     @ManyToOne
