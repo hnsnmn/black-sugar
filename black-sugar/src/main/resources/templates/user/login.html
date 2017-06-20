@@ -7,6 +7,9 @@
 <link href="/css/signin.css" rel="stylesheet">
 
 <div class="container">
+	{{#errorMessage}}
+	<div class="alert alert-danger" role="alert" >{{this}}</div>
+	{{/errorMessage}}
 	<form class="form-signin" action="/users/login" method="post">
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="userId" class="sr-only">ID</label>
